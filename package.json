@@ -1,0 +1,14 @@
+{
+  "name": "txdo",
+  "version": "0.0.0",
+  "description": "Coeur",
+  "main": " ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "imagemagick": "^0.1.3"
+  }
+}
