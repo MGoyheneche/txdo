@@ -5,16 +5,23 @@ im.readMetadata('image2.jpg', function(err, metadata){
   if (err) throw err;
   console.log(metadata.exif.gpsLatitude);
   console.log(metadata.exif.gpsLongitude);
+
   var degreeLatitude = metadata.exif.gpsLatitude.split(', ')
 	var degreeLongitude = metadata.exif.gpsLongitude.split(', ')
-	var latitude = ConvertDMSToDD(parseInt(degreeLatitude[0].split('/')), 
-																parseInt(degreeLatitude[1].split('/')), 
-																parseInt(degreeLatitude[2].split('/'))/100, 
-																metadata.exif.gpsLatitudeRef);
-	var longitude = ConvertDMSToDD(parseInt(degreeLongitude[0].split('/')), 
-																 parseInt(degreeLongitude[1].split('/')), 
-																 parseInt(degreeLongitude[2].split('/'))/100, 
-        												 metadata.exif.gpsLongitudeRef);
+
+  var latitude = ConvertDMSToDD(
+    parseInt(degreeLatitude[0].split('/')),
+    parseInt(degreeLatitude[1].split('/')),
+		parseInt(degreeLatitude[2].split('/'))/100,
+    metadata.exif.gpsLatitudeRef
+  );
+
+  var longitude = ConvertDMSToDD(
+    parseInt(degreeLongitude[0].split('/')),
+    parseInt(degreeLongitude[1].split('/')),
+    parseInt(degreeLongitude[2].split('/'))/100,
+    metadata.exif.gpsLongitudeRef
+  );
 
   console.log(latitude);
   console.log(longitude);
@@ -33,4 +40,4 @@ var ConvertDMSToDD = function(days, minutes, seconds, direction) {
   }
   return dd;
 }
-	
+
