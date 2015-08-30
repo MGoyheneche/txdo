@@ -1,5 +1,6 @@
+var im = require('imagemagick'),
+    https = require('https');
 
-var im = require('imagemagick');
 
 im.readMetadata('image2.jpg', function(err, metadata){
   if (err) throw err;
@@ -25,6 +26,30 @@ im.readMetadata('image2.jpg', function(err, metadata){
 
   console.log(latitude);
   console.log(longitude);
+
+  var apiKey = 'AIzaSyAbQw6_bpgYjoV5hMfeRv3NqtRUKCl9u0Y';
+  var data = '';
+  var options = {
+    host: 'maps.googleapis.com',
+    path: '/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&key=' + apiKey
+  };
+
+
+  https.get(options, function(res) {
+    var body = '';
+    res.on('data', function(chunk) {
+      body += chunk;
+    });
+    res.on('end', function() {
+      // console.log(body[results]);
+      body = JSON.parse(body);
+      console.log(body.results[0].formatted_address);
+    });
+  }).on('error', function(e) {
+    console.log('Got error: ' + e.message);
+  });
+
+  console.log(data);
 
 })
 
