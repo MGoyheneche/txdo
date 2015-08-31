@@ -1,4 +1,5 @@
-var im = require('imagemagick'),
+var env = require('./env.js'),
+    im = require('imagemagick'),
     https = require('https');
 
 
@@ -27,7 +28,7 @@ im.readMetadata('image2.jpg', function(err, metadata){
   console.log(latitude);
   console.log(longitude);
 
-  var apiKey = 'AIzaSyAbQw6_bpgYjoV5hMfeRv3NqtRUKCl9u0Y';
+  var apiKey = process.env['GMAP_KEY'];
   var data = '';
   var options = {
     host: 'maps.googleapis.com',
