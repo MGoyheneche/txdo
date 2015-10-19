@@ -1,1 +1,5 @@
-env.js
+.DS_Store
+
+server/env.js
+server/tmp
+node_modules
