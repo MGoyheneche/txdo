@@ -1,5 +1,5 @@
 .DS_Store
 
 server/env.js
-server/tmp
+server/tmp/*
 node_modules
